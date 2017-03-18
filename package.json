@@ -1,0 +1,30 @@
+{
+  "name": "react-app-massrollover",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "moment": "^2.17.1",
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.8",
+    "react-datepicker": "^0.41.1",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.17.1",
+    "eslint-config-google": "^0.7.1",
+    "eslint-config-standard": "^7.0.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^6.10.0",
+    "eslint-plugin-standard": "^2.1.1",
+    "react-scripts": "0.9.4",
+    "style-loader": "^0.13.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
