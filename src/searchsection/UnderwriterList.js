@@ -35,8 +35,8 @@ class UnderwriterList extends React.Component {
       return (
       <div>
         <Field name={uwFieldName} component={renderSelectField} label={label}>
-           {allUnderwritersFetch.value.results.map(underwriter =>
-          <MenuItem key={underwriter.name} value={underwriter.name} primaryText={underwriter.name}/>)}
+           {allUnderwritersFetch.value.map(underwriter =>
+          <MenuItem key={underwriter.name} value={underwriter.name} primaryText={underwriter.fullname}/>)}
         </Field>
       </div>
       )
@@ -49,7 +49,7 @@ class UnderwriterList extends React.Component {
 export default connect([{
     resource: 'allUnderwriters',
     request: {
-        url: 'http://swapi.co/api/people/',
+        url: '/services/UnderwriterService/UnderwriterList/',
         contentType: 'application/json'
     }
 }])(UnderwriterList);

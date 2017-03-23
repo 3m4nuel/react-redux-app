@@ -7,9 +7,15 @@ import ProducerCodeField from './ProducerCodeField';
 import EffectiveDateField from './EffectiveDateField';
 import { connect } from 'react-redux'
 
+function validateProducerCode(producerCode) {
+  return fetch('http://localhost:7001/services/ProducerService/Validate/' + producerCode)
+            .then( response => response.json() )
+            .then( ({result: isValid}) => isValid )
+}
+
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'producercodeold', 'underwriterold', 'underwriternew', 'producercodenew' ]
+  const requiredFields = [ 'producercodeold', 'underwriterold', 'effectiveDate', 'underwriternew', 'producercodenew' ]
 
   requiredFields.forEach(field => {
     if (!values[ field ]) {
@@ -17,22 +23,10 @@ const validate = values => {
     }
   })
 
-  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
-  }
-
-  if(values.producercodeold !== '000000') {
-    errors.producercodeold = 'Invalid producer code'
-  }
-
-  if(values.producercodenew !== '000000') {
-    errors.producercodenew = 'Invalid producer code'
-  }
-
   return errors
 }
 
-const SearchForm = props => {
+let SearchForm = props => {
   const { handleSubmit, pristine, reset, submitting, searchoption} = props
   return (
     <form onSubmit={handleSubmit}>
