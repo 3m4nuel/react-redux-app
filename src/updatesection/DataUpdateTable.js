@@ -44,20 +44,10 @@ class DataUpdateTable extends React.Component {
   }
 
 handleRowSelection(rowIds, data) {
-    const selectedFeeds = [];
-        console.log(rowIds.all);
-        console.log(data)
-
- //   for(let i in rowIds) {
-   //   selectedFeeds.push(data[i])
-    //}
-    console.log(selectedFeeds);
-
   }
 
   render(){
     const {data} = this.props;
-    console.log(data)
     return (
       <div>
         <Field data={data} name="updatetable" onRowSelection={this.handleRowSelection(data)} component={renderUpdateTable}/>
@@ -65,6 +55,5 @@ handleRowSelection(rowIds, data) {
       )
   }
 }
-
 
 export default DataUpdateTable

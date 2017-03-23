@@ -1,10 +1,12 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import DataUpdateTable from './DataUpdateTable';
 import DataNoUpdateTable from './DataNoUpdateTable';
+import { connect } from 'react-redux'
 
-const UpdateForm = props => {
-  const { handleSubmit, pristine, reset, submitting, data } = props
+let UpdateForm = props => {
+  const { handleSubmit, submitting, data } = props
+
   return (
     <form onSubmit={handleSubmit}>
       <DataNoUpdateTable data={data}/>
@@ -17,7 +19,12 @@ const UpdateForm = props => {
   )
 }
 
-export default reduxForm({
-  form: 'UpdateForm',
-  enableReinitialize: true
+const mapStateToProps = (state, ownProps) => ({data: state.dataReducer})
+
+UpdateForm = reduxForm({
+  form: 'UpdateForm'
 })(UpdateForm)
+
+UpdateForm = connect(mapStateToProps)(UpdateForm)
+
+export default UpdateForm

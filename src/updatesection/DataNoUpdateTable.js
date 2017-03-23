@@ -2,8 +2,6 @@ import React from 'react'
 import { Field } from 'redux-form'
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn } from 'material-ui/Table'
 
-let feeds = [{id:0,name:"joe"},{id:1,name:"john"},{id:2,name:"Brad"},{id:3,name:"Jack"},{id:4,name:"Andrew"},{id:5,name:"joe"},{id:6,name:"john"},{id:7,name:"Brad"},{id:8,name:"Jack"},{id:9,name:"Andrew"}]
-
 const renderUpdateTable =({ input, data, ...rest }) => (
  <div>
    <br/>
@@ -46,18 +44,12 @@ class DataNoUpdateTable extends React.Component {
   }
 
 handleRowSelection(rowIds) {
-    const selectedFeeds = [];
 
-    for(let i in rowIds) {
-      selectedFeeds.push(feeds[rowIds[i]])
-    }
-    console.log(selectedFeeds);
 
   }
 
   render(){
     const {data} = this.props;
-    console.log(data)
     return (
       <div>
         <Field name="noupdatetable" data={data} onRowSelection={this.handleRowSelection} component={renderUpdateTable}/>

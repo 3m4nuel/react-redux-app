@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import { reducer as fetchReducer} from 'react-redux-fetch';
+import { reducer as fetchReducer} from 'react-redux-fetch'
+import { APP_DATA } from '../actions/data'
 
-const searchresults = (state = [], action) => {
+const dataReducer = (state = [], action) => {
   switch (action.type) {
-    case 'SET_SEARCH_DATA':
-      return action.searchdata
+    case APP_DATA:
+      return action.data
     default:
       return state
   }
@@ -14,7 +15,7 @@ const searchresults = (state = [], action) => {
 const reducers = combineReducers({
   form: formReducer,
   repository: fetchReducer,
-  searchresults
+  dataReducer
 })
 
 export default reducers
