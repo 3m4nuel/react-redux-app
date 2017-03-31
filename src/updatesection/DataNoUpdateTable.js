@@ -7,6 +7,7 @@ const renderUpdateTable =({ input, data, ...rest }) => (
    <br/>
    <h4>The following applications will not be changed:</h4>
    <Table
+      height='300px'
       multiSelectable={true}
       {...rest}>
       <TableHeader  displaySelectAll={false}>
@@ -20,43 +21,25 @@ const renderUpdateTable =({ input, data, ...rest }) => (
           </TableRow>
       </TableHeader>
       <TableBody displayRowCheckbox={false}>
-      {data.map((user, i) =>
+      {data.map((app, i) =>
         <TableRow key={i}>
-           <TableRowColumn>{user.id}</TableRowColumn>
-          <TableRowColumn>{user.name}</TableRowColumn>
-          <TableHeaderColumn>Underwriter</TableHeaderColumn>
-          <TableHeaderColumn>Insured Name</TableHeaderColumn>
-          <TableHeaderColumn>Status</TableHeaderColumn>
-          <TableHeaderColumn>Effective Date</TableHeaderColumn>
+           <TableRowColumn>{app.applicationNumber}</TableRowColumn>
+          <TableRowColumn>{app.producerCode}</TableRowColumn>
+          <TableRowColumn>{app.underwriter}</TableRowColumn>
+          <TableRowColumn>{app.insuredName}</TableRowColumn>
+          <TableRowColumn>{app.status}</TableRowColumn>
+          <TableRowColumn>{app.effectiveDate}</TableRowColumn>
         </TableRow>
         )}
       </TableBody>
    </Table>
   </div>
-
-
   )
 
-class DataNoUpdateTable extends React.Component {
-  constructor(){
-      super();
-      this.handleRowSelection = this.handleRowSelection.bind(this);
-  }
-
-handleRowSelection(rowIds) {
-
-
-  }
-
-  render(){
-    const {data} = this.props;
-    return (
-      <div>
-        <Field name="noupdatetable" data={data} onRowSelection={this.handleRowSelection} component={renderUpdateTable}/>
-      </div>
-      )
-  }
-}
-
+const DataNoUpdateTable = ({data}) => (
+  <div>
+      <Field name="noupdatetable" data={data} component={renderUpdateTable}/>
+  </div>
+  )
 
 export default DataNoUpdateTable

@@ -7,12 +7,6 @@ import ProducerCodeField from './ProducerCodeField';
 import EffectiveDateField from './EffectiveDateField';
 import { connect } from 'react-redux'
 
-function validateProducerCode(producerCode) {
-  return fetch('http://localhost:7001/services/ProducerService/Validate/' + producerCode)
-            .then( response => response.json() )
-            .then( ({result: isValid}) => isValid )
-}
-
 const validate = values => {
   const errors = {}
   const requiredFields = [ 'producercodeold', 'underwriterold', 'effectiveDate', 'underwriternew', 'producercodenew' ]
@@ -36,7 +30,6 @@ let SearchForm = props => {
       {(searchoption) ? <EffectiveDateField/> : ''}
       {(searchoption === 'underwriter') ? <UnderwriterList uwFieldName="underwriternew" label="New Value"/> : ''}
       {(searchoption === 'producerCode') ? <ProducerCodeField producerCodeFieldName="producercodenew" label="New Value"/> : ''}
-
       <br/>
       <div>
         <button type="submit" disabled={pristine || submitting}>Search</button>

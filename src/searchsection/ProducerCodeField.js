@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField'
 const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
   <TextField hintText={label}
     floatingLabelText={label}
+    maxLength="6"
     errorText={touched && error}
     {...input}
     {...custom}

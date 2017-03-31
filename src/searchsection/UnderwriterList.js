@@ -49,7 +49,7 @@ class UnderwriterList extends React.Component {
 export default connect([{
     resource: 'allUnderwriters',
     request: {
-        url: '/services/UnderwriterService/UnderwriterList/',
+        url: 'http://ecastil2:7001/services/UnderwriterService/UnderwriterList/',
         contentType: 'application/json'
     }
 }])(UnderwriterList);
